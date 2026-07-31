@@ -1,8 +1,17 @@
-let s="anagram"
-let t = "nagarao"
+// let s="anagram"
+// let t = "nagarao"
+// let s = "aa"
+// let t = "ab"
 
-function VaildAG(s, t) {
+let s = "listen"
+let t = "silent"
+
+
+function ValidAnagram(s, t) {
     let map = {}
+    if (s.length != t.length) {
+        return false
+    }
     for (let i in s) {
         if (map[s[i]]) {
             map[s[i]]++
@@ -10,32 +19,19 @@ function VaildAG(s, t) {
             map[s[i]]=1
         }
     }
-    console.log(map)
-}
-
-console.log(VaildAG(s,t))
-
-function ValidAnagram(s, t) {
-    let count = 0
-    for (let i in s) {
-        
-
-        if (s.length != t.length) {
+    for (let j in t) {
+        if (map[t[j]]) {
+            map[t[j]]--
+        } else {
+            map[t[j]]=1
+        }
+    }
+    for (let key in map) {
+        if (map[key]!= 0) {
             return false
         }
-        for (let j in t) {
-            if (s[i] == t[j]) {
-                count++
-            }
-        }       
     }
-    console.log(count)
-     if (count > s.length) {
-            return true
-     } else {
-         return false
-        }
-
+    return true
 }
 console.log(ValidAnagram(s,t));
 
