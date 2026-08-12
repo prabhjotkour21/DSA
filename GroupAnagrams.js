@@ -10,7 +10,7 @@ function groupAnagrams(str) {
             map[s]=[str[i]]
         }
     }
-    return Object.entries(map)
+    return Object.values(map)
 }
 
 
